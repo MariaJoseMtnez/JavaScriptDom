@@ -1,0 +1,9 @@
+if ("") console.log("1");  // undefined
+if ("0") console.log("2"); // 2
+if (0) console.log("3"); // undefined 
+if ([]) console.log("4"); // 4
+if ({}) console.log("5"); // 5
+if (null) console.log("6"); // undefined 
+if (undefined) console.log("7"); // undefined 
+if (NaN) console.log("8"); // undefined 
+if (-1) console.log("9"); // 9 
