@@ -1,0 +1,27 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* outline: 1px solid red; */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+li,
+ul {
+  margin: 20rems;
+}
+
+input {
+  border-radius: 5px;
+  width: 20rem;
+  background-color: rgb(250, 252, 251);
+  border: solid 2px rgb(105, 199, 144);
+}
+button {
+  margin: 1rem;
+  border-radius: 5px;
+  background-color: aliceblue;
+  width: 10rem;
+}

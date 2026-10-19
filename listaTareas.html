@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Lista de tareas</title>
+    <link rel="stylesheet" href="css/style01.css" />
   </head>
   <body>
     <h1>Mis tareas</h1>
@@ -36,12 +37,27 @@
 
         //crear nuevo boton
         const nuevoEliminar = document.createElement("button");
+        nuevoEliminar.classList.add("botonEliminar");
         nuevoEliminar.textContent = "Eliminar tarea";
 
         //añadimos dentro de (li)
-            nuevaTarea.appendChild(nuevoEliminar);
+        nuevaTarea.appendChild(nuevoEliminar);
 
-        //
+        // //eliminar tarea
+        // nuevoEliminar.addEventListener("click", (event) => {
+        //   lista.removeChild(nuevaTarea);
+        // });
+        //UN SOLO Listener en el <ul>
+          lista.addEventListener("click", (event)=>{
+            if (event.target.tagName==="BUTTON"){
+              event.target.parentElement.remove();
+            }
+
+          })
+
+        //borrar input
+        input.value="";
+        input.focus();
       });
     </script>
   </body>
