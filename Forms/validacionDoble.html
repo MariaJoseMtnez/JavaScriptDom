@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validacion Email</title>
+  </head>
+  <body>
+    <style>
+      label {
+        display: block;
+      }
+      button {
+        margin-top: 20px;
+        display: block;
+      }
+    </style>
+    <h1>Formulario</h1>
+    <p>
+      Realiza un formulario que tenga dos campos de email con las mismas
+      validaciones que el ejercicio anterior. Deberá validar antes del envío si
+      los dos emails son iguales
+    </p>
+    <div class="cajaformulario">
+      <form action="get" novalidate>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" />
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" />
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email1" />
+        <label for="email2">Confirmar Email</label>
+        <input type="email" name="email" id="email2" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <p id="mensaje"></p>
+    <script>
+      let listaServidores = [
+        "terra.es",
+        "myspace.com",
+        "arrakis.es",
+        "tuenti.es",
+      ];
+      const formulario = document.querySelector("form");
+      const email1 = document.querySelector("#email1");
+      const email2 = document.querySelector("#email2");
+      const mensaje = document.querySelector("#mensaje");
+
+      function validarEmail(email) {
+        const partes = email.split("@");
+
+        if (partes.length !== 2) return false; // sin @ o con más de una
+        if (partes[0] === "") return false; // sin texto antes
+        if (partes[1] === "") return false; // sin servidor
+        if (!partes[1].includes(".")) return false; // sin punto en el dominio
+        if (partes[1].startsWith(".")) return false; // dominio empieza por punto
+        if (partes[1].endsWith(".")) return false; // dominio termina en punto
+
+        return true;
+      }
+
+      function comprobarServidor(email) {
+        const partes = email.split("@");
+        const servidor = partes[1];
+        return listaServidores.includes(servidor);
+      }
+
+      function compararEmails(emailA, emailB) {
+        return emailA === emailB;
+      }
+
+      formulario.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email_escrito1 = email1.value.trim();
+        const email_escrito2 = email2.value.trim();
+        if (email_escrito1 === "" || email_escrito2 === "") {
+          mensaje.textContent = "escribe un email";
+          return;
+        }
+        if (!validarEmail(email_escrito1) || !validarEmail(email_escrito2)) {
+          mensaje.textContent = "Escribe un email válido.";
+          return;
+        }
+        if (
+          !comprobarServidor(email_escrito1) ||
+          !comprobarServidor(email_escrito2)
+        ) {
+          mensaje.textContent = "servidor no encontrado";
+          return;
+        }
+        if (!compararEmails(email_escrito1, email_escrito2)) {
+          mensaje.textContent = "Los emails deben coincidir";
+          return;
+        }
+        mensaje.textContent = "✓ Email válido";
+      });
+    </script>
+  </body>
+</html>

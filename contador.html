@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContadorCaracteres</title>
+  </head>
+  <body>
+    <style>
+      .invalido {
+        
+        background-color: red;
+      }
+    </style>
+    <h1>Ejercicio Contador de caracteres</h1>
+    <label for="frase">Introduce una frase</label>
+    <input type="text" name="texto" id="inputCliente" />
+    <p id="contador"></p>
+    <script>
+      //-----coger elementos que necesitamos
+      const input = document.querySelector("#inputCliente");
+      const contador = document.querySelector("#contador");
+      //añadir el evento input (cada vez que escribe el usuario)
+      input.addEventListener("input", () => {
+        //-----leer el valor actual
+        const valorInput = input.value;
+        const longitud = valorInput.length;
+        //-----Actualizar contador
+        contador.textContent = `Tienes ${longitud} caracteres`;
+        // ---- condicion css, añadir o quitar clase 
+        if (longitud > 100) {
+          input.classList.add("invalido");
+        } else input.classList.remove("invalido");
+      });
+    </script>
+  </body>
+</html>
