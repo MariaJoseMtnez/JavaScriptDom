@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de tareas</title>
+  </head>
+  <body>
+    <h1>Mis tareas</h1>
+
+    <form id="formTarea">
+      <input type="text" id="nuevaTarea" placeholder="Nueva tarea..." />
+      <button type="submit">Añadir</button>
+    </form>
+
+    <ul id="listaTareas"></ul>
+
+    <script>
+      const formulario = document.querySelector("#formTarea");
+      const input = document.querySelector("#nuevaTarea");
+      const boton = document.querySelector("button");
+      const lista = document.querySelector("#listaTareas");
+
+      formulario.addEventListener("submit", (event) => {
+        //no recargar página
+        event.preventDefault();
+        const valorInput = input.value.trim();
+        if (valorInput === "") {
+          return;
+        }
+        // crear nuevo li
+        const nuevaTarea = document.createElement("li");
+        //darle valor al li
+        nuevaTarea.textContent = valorInput;
+        //añadirlo a lista (ul)
+        lista.appendChild(nuevaTarea);
+
+        //crear nuevo boton
+        const nuevoEliminar = document.createElement("button");
+        nuevoEliminar.textContent = "Eliminar tarea";
+
+        //añadimos dentro de (li)
+            nuevaTarea.appendChild(nuevoEliminar);
+
+        //
+      });
+    </script>
+  </body>
+</html>
