@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validación en vivo</title>
+    <style>
+        .error { color: red; }
+        .ok { color: green; }
+        .neutro { color: gray; }
+    </style>
+</head>
+<body>
+    <h1>Registro</h1>
+
+    <form id="form">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" placeholder="Escribe tu usuario" />
+        <span id="feedback" class="neutro"></span>
+        <br /><br />
+        <button type="submit">Registrar</button>
+    </form>
+
+    <p id="mensajeFinal"></p>
+
+    <script src="script02.js"></script>
+</body>
+</html>
