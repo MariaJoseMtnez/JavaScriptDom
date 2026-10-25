@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      label,
+      input,
+      select,
+      button {
+        display: block;
+        margin: 10px;
+      }
+      .alta {
+        color: red;
+        font-weight: bold;
+      }
+      .media {
+        color: orange;
+        font-weight: bold;
+      }
+      .baja {
+        color: green;
+        font-weight: bold;
+      }
+      .completada {
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+    </style>
+
+    <h1>Gestor de tareas</h1>
+    <form id="formTarea" action="get" novalidate>
+      <label for="titulo">Titulo</label>
+      <input type="text" id="titulo" />
+      <span id="errorTitulo" class="error"></span>
+
+      <label for="prioridad">Prioridad</label>
+      <select id="prioridad">
+        <option value="alta">Alta</option>
+        <option value="media" selected>Media</option>
+        <option value="baja">Baja</option>
+      </select>
+      <label for="fechaLimite">Fecha Limite</label>
+      <input type="date" name="fechaLimite" id="fechaLimite" />
+      <button type="submit">Añadir tarea</button>
+    </form>
+
+    <p id="contadores">Total: 0 tareas | Completadas: 0</p>
+    <ul id="listaTareas"></ul>
+
+    <script src="./formAltanueva.js"></script>
+  </body>
+</html>

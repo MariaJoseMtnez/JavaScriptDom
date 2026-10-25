@@ -9,13 +9,18 @@ Usar delegación de eventos:
     Un listener en #carrito para los clics en botones "Quitar"*/
 
 //añadir al carrito al hacer click
+function calcularTotal() {
+  let suma = 0;
+  for (const li of carrito.querySelectorAll("li")) {
+    suma += parseFloat(li.dataset.precio);
+  }
+  total.textContent = `Total: ${suma.toFixed(2)}€`;
+}
 
 const productos = document.querySelector("#productos");
 const carrito = document.querySelector("#carrito");
-const pr = document.querySelector(".producto");
 const total = document.querySelector("#total");
-const elemento = document.querySelector(".producto");
-let sumaTotal = 0;
+
 productos.addEventListener("click", (event) => {
   if (event.target.matches(".producto")) {
     const nombreElemento = event.target.dataset.nombre;
@@ -26,22 +31,22 @@ productos.addEventListener("click", (event) => {
     //añadir texto:
     nuevoLi.textContent = `${nombreElemento} ,  ${precioElemento}`;
     carrito.appendChild(nuevoLi);
+    //crear boton para eliminar articulo
+    const btn = document.createElement("button");
+    nuevoLi.appendChild(btn);
+    btn.textContent = "Eliminar";
+    btn.classList.add("eliminar");
     //sumar elementos al precio
-    sumaTotal += precioElemento;
-    total.textContent = `Total: ${sumaTotal}`;
-    nuevoLi.dataset.precio=precioElemento;
+    nuevoLi.dataset.precio = precioElemento;
+    nuevoLi.classList.add("productoAñadido");
+    calcularTotal();
   }
 });
 
 //listener en carrito para elminar productos:
-carrito.addEventListener("click",(event)=>{
-    if (event.target.matches("li")){
-        
-        
-        const precioElemento=parseFloat(event.target.dataset.precio)
-        total.removeChild("li")
-        sumaTotal-=precioElemento;
-    }
-
-})
-
+carrito.addEventListener("click", (event) => {
+  if (!event.target.matches(".eliminar")) return;
+  const li = event.target.closest("li");
+  li.remove();
+  calcularTotal();
+});
