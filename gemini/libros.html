@@ -1,0 +1,21 @@
+<h1>Biblioteca</h1>
+
+<form id="formLibro">
+    <input type="text" id="titulo" placeholder="Título" required />
+    <input type="text" id="autor" placeholder="Autor" required />
+    <input type="number" id="anio" placeholder="Año" required />
+    <input type="text" id="genero" placeholder="Género" required />
+    <input type="number" id="paginas" placeholder="Páginas" required />
+    <button type="submit">Añadir libro</button>
+</form>
+
+<label for="filtro">Filtrar por género:</label>
+<select id="filtro">
+    <option value="todos">Todos</option>
+</select>
+
+<ul id="listaLibros"></ul>
+
+<p id="resumen"></p>
+
+<script src="main.js" type="module"></script>
